@@ -77,5 +77,3 @@ def sucessor(estado:str):
         sucessors_set.add((movement, coded_state))
 
     return sucessors_set
-
-print(sucessor("2_3541687"))
