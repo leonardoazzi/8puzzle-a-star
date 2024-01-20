@@ -1,4 +1,6 @@
 from typing import Iterable, Set, Tuple
+import numpy as np
+from aux import decod_state, possible_actions, cod_state, BLANK_SPACE
 
 class Nodo:
     """
@@ -15,7 +17,6 @@ class Nodo:
         # substitua a linha abaixo pelo seu codigo
         raise NotImplementedError
 
-
 def sucessor(estado:str)->Set[Tuple[str,str]]:
     """
     Recebe um estado (string) e retorna um conjunto de tuplas (ação,estado atingido)
@@ -24,8 +25,22 @@ def sucessor(estado:str)->Set[Tuple[str,str]]:
     :param estado:
     :return:
     """
-    # substituir a linha abaixo pelo seu codigo
-    raise NotImplementedError
+    sucessors_set = set()
+
+    state_grid = decod_state(estado)
+
+    # Busca a posição do espaço em branco na matriz e retorna
+    # uma lista de ações possíveis
+    for idx_row, row in enumerate(state_grid):
+        for idx_col, col in enumerate(row):
+            if col == BLANK_SPACE:
+                actions = possible_actions(state_grid, (idx_row, idx_col))
+
+    for grid, movement in actions:
+        coded_state = cod_state(grid)
+        sucessors_set.add((movement, coded_state))
+
+    return sucessors_set
 
 
 def expande(nodo:Nodo)->Set[Nodo]:
