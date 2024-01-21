@@ -1,6 +1,6 @@
 from typing import Iterable, Set, Tuple
 import numpy as np
-from aux import decod_state, possible_actions, cod_state, BLANK_SPACE
+from gameLogic import decod_state, possible_actions, cod_state, BLANK_SPACE
 
 class Nodo:
     """
