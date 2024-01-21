@@ -52,8 +52,18 @@ def expande(nodo:Nodo)->Set[Nodo]:
     :param nodo: objeto da classe Nodo
     :return:
     """
-    # substituir a linha abaixo pelo seu codigo
-    raise NotImplementedError
+    conj_vizinhos = set()
+
+    lista_pares = sucessor(nodo.estado)
+    novo_custo = nodo.custo + 1
+
+    for pares in lista_pares:
+        movement = pares[0]
+        state = pares[1]
+        nodo_expandido = Nodo(state, nodo, movement, novo_custo)
+        conj_vizinhos.add(nodo_expandido)
+
+    return conj_vizinhos
 
 
 def astar_hamming(estado:str)->list[str]:
