@@ -1,6 +1,7 @@
 import heapq
 from collections import defaultdict
 from solucao import Nodo, sucessor, expande
+import heuristicas
 
 # Adiciona um vértice disconexo ao grafo se for um novo vértice
 # v: vértice
@@ -55,7 +56,7 @@ def astar_generic(start_node, end_node):
 			for neighbour, weight in graph[current_node]:
 				if neighbour in visited: continue
 				#TODO
-				updated_distance = distances[current_node] + weight # + heuristic()
+				updated_distance = distances[current_node] + weight # + heuristicas.heuristica_hamming(neighbour.estado)
 				if neighbour not in distances:
 					distances[neighbour] = float('infinity')
 					print(neighbour.estado, "\n")
