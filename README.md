@@ -3,6 +3,8 @@ A* Search Algorithm implemented to solve the 8-puzzle game, with Manhattan and H
 
 O 8-puzzle é composto por uma moldura 3x3 contendo um conjunto de peças numeradas de 1 a 8 eum espaço vazio. Uma peça vizinha ao espaço vazio pode ser deslizada para ele. O objetivo é alcançar um estado onde as peças numeradas estão em ordem.
 
+![image](https://github.com/leonardoazzi/8puzzle-a-star/assets/13557537/7cacde04-90bf-4c9a-9bc0-f9eff121c853)
+
 ## Bibliotecas:
 `numpy==1.26.3`
 
