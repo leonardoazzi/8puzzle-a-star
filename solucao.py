@@ -4,6 +4,13 @@ from gameLogic import decod_state, possible_actions, cod_state, BLANK_SPACE
 import heapq
 import heuristicas
 
+import time
+
+start_time = time.time()
+
+
+
+
 class Nodo:
     """
     Implemente a classe Nodo com os atributos descritos na funcao init
@@ -107,7 +114,7 @@ def astar_hamming(estado: str) -> list[str]:
 
         if v.estado == "12345678_":
             caminho = []
-            print("CUSTO HAMMING: ",v.custo)
+            # print("CUSTO HAMMING: ",v.custo)
             while v:
                 caminho.append(v.acao)
                 v = v.pai
@@ -118,6 +125,7 @@ def astar_hamming(estado: str) -> list[str]:
             vizinhos = expande(v)
             for vizinho in vizinhos:
                 if vizinho not in X:
+                    # print("Nodos expandidos com hamming:", len(X))
                     heapq.heappush(F, (vizinho.custo + heuristicas.heuristica_hamming(vizinho.estado), vizinho))
 
     return None
@@ -144,7 +152,7 @@ def astar_manhattan(estado:str)->list[str]:
 
         if v.estado == "12345678_":
             caminho = []
-            print("CUSTO MANHATTAN: ",v.custo)
+            # print("CUSTO MANHATTAN: ",v.custo)
             while v:
                 caminho.append(v.acao)
                 v = v.pai
@@ -155,6 +163,7 @@ def astar_manhattan(estado:str)->list[str]:
             vizinhos = expande(v)
             for vizinho in vizinhos:
                 if vizinho not in X:
+                    # print("Nodos expandidos com manhattan:", len(X))
                     heapq.heappush(F, (vizinho.custo + heuristicas.heuristica_manhattan(vizinho.estado), vizinho))
 
     return None
@@ -198,8 +207,11 @@ def astar_new_heuristic(estado:str)->list[str]:
     # substituir a linha abaixo pelo seu codigo
     raise NotImplementedError
 
-"""gabarito_hamming = astar_hamming("2_3541687")
-gabarito_manhattan = astar_manhattan("2_3541687")
+## DEBUG
+gabarito_hamming = astar_hamming("2_3541687")
+# gabarito_manhattan = astar_manhattan("2_3541687")
 
-for i,j in zip(gabarito_hamming, gabarito_manhattan):
-    print(i + "         " + j)"""
+# for i,j in zip(gabarito_hamming, gabarito_manhattan):
+#     print(i + "         " + j)
+
+print("--- %s seconds ---" % (time.time() - start_time))
