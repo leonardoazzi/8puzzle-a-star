@@ -38,13 +38,6 @@ def custo_minimo(lista_nodos: List[Nodo]) -> Nodo:
 
     return nodo_menor_custo
 
-def esta_na_lista(lista, estado):
-    for _, nodo in lista:
-        if nodo.estado == estado:
-            return True
-    return False
-
-
 def sucessor(estado: str) -> Set[Tuple[str, str]]:
     """
     Recebe um estado (string) e retorna um conjunto de tuplas (ação, estado atingido)
